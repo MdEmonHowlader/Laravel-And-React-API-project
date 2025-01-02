@@ -16,8 +16,8 @@ class AuthController extends Controller
     }
     public function login(Request $request){
         $fields = $request->validate([
-            'email'=>'required|string',
-            'password'=>'required|string'
+            'email'=>'required|email|exists:users,email',
+            'password'=>'required'
         ]); 
         $user = User::where('email',$fields['email'])->first();
         if(!$user || !Hash::check($fields['password'],$user->password)){
@@ -28,6 +28,9 @@ class AuthController extends Controller
         return 'Login';
     }
     public function logout(Request $request){
-        return 'Logout';
+       $request->user()->token()->delete();
+         return [
+              'message'=>'Logged out'
+         ];
     }
 }

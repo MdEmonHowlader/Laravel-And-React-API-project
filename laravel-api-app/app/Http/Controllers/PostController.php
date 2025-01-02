@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Route;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMiddleware
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -24,7 +30,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
         ]);
-        $post = Post::create($fields);
+        $post = $request->user()->posts()->create($fields);
         return  $post;
     }
 
