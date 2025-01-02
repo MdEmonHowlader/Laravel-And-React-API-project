@@ -16,9 +16,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     Route::resource('posts', PostController::class)->except(['index', 'show']);
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    
+    return $request->user();
+})->middleware('auth:sanctum');
 Route::apiResource('posts',PostController::class);
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);

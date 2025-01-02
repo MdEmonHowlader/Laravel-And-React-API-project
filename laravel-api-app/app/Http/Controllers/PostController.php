@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -47,6 +48,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize('modify', $post);
         $fields= $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -60,6 +62,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function destroy(Post $post)
     {
+        $this->authorize('modify', $post);
         $post->delete();
         return ['message' => 'Post deleted'];
     }
