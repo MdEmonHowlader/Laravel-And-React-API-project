@@ -1,8 +1,6 @@
-
 export default function Home() {
-  return (
-    <>
-    <h1>Lemon</h1>
-    </>
-  )
-}
+    return <div>
+        <h1 className="nav-link">Home</h1>
+        </div>;
+  }
+  
