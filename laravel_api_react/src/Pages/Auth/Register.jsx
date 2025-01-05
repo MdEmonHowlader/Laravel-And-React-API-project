@@ -40,7 +40,7 @@ export default function Register() {
       <h1 className="title">Register New account</h1>
       <form onSubmit={handleSubmit} className="w-1/2 mx-auto space-y-4">
         <div className="form-control">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name :</label>
           <input
             type="text"
             name="name"
@@ -59,7 +59,7 @@ export default function Register() {
         </div>
 
         <div className="form-control">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email :</label>
           <input
             type="email"
             name="email"
@@ -78,7 +78,7 @@ export default function Register() {
         </div>
 
         <div className="form-control">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password :</label>
           <input
             type="password"
             name="password"
@@ -86,7 +86,7 @@ export default function Register() {
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
-            autoComplete="new-password" 
+            
             aria-describedby={errors.password ? "passwordError" : undefined}
           />
             {errors.password && (
@@ -96,7 +96,7 @@ export default function Register() {
             )}
         </div>
         <div className="form-control">
-          <label htmlFor="password_confirmation">Confirm Password</label>
+          <label htmlFor="password_confirmation">Confirm Password :</label>
           <input
             type="password"
             name="password_confirmation"
@@ -104,7 +104,7 @@ export default function Register() {
             value={formData.password_confirmation}
             onChange={handleChange}
             placeholder="Enter your Confirm Password"
-            autoComplete="new-password" 
+            
             aria-describedby={errors.password_confirmation ? "password_confirmationError" : undefined}
           />
             {errors.password_confirmation && (
