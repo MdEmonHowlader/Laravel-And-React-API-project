@@ -17,9 +17,8 @@ export default function Register() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
@@ -33,7 +32,25 @@ export default function Register() {
     } else {
       console.log(data);
     }
-  };
+    
+  }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const response = await fetch("/api/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   });
+  //   const data = await response.json();
+  //   if (data.errors) {
+  //     setError(data.errors);
+  //   } else {
+  //     console.log(data);
+  //   }
+  // };
 
   return (
     <>
